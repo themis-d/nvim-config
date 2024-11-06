@@ -416,8 +416,15 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sp', function(opts)
         opts = opts or {}
         opts.cwd = vim.fn.systemlist('git rev-parse --show-toplevel')[1] .. '/src/'
-        require('telescope.builtin').find_files(opts)
+        builtin.find_files(opts)
       end, { desc = '[S]earch Git [P]roject' })
+
+      -- Grep files in src of git project
+      vim.keymap.set('n', '<leader>sG', function(opts)
+        opts = opts or {}
+        opts.cwd = vim.fn.systemlist('git rev-parse --show-toplevel')[1] .. '/src/'
+        builtin.live_grep(opts)
+      end, { desc = '[S]earch by Git [G]rep' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -622,6 +629,7 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         clangd = {},
+        hls = {},
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
