@@ -157,6 +157,17 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Options specific to file types
+vim.opt.filetype = 'on'
+vim.api.nvim_create_autocmd('filetype', {
+  desc = 'set default options for c files',
+
+  pattern = 'c',
+  callback = function(opts)
+    vim.opt_local.cc = '81'
+  end,
+})
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
