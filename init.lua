@@ -164,7 +164,7 @@ vim.api.nvim_create_autocmd('filetype', {
 
   pattern = 'c',
   callback = function(opts)
-    vim.opt_local.cc = '81'
+    vim.opt.cc = '81'
   end,
 })
 
@@ -266,6 +266,9 @@ require('lazy').setup({
       },
     },
   },
+
+  -- Display style plugins
+  { 'lukas-reineke/virt-column.nvim', opts = {} },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
