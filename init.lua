@@ -164,7 +164,7 @@ vim.api.nvim_create_autocmd('filetype', {
 
   pattern = 'c',
   callback = function(opts)
-    vim.opt.cc = '81'
+    require('virt-column').setup_buffer(0, { enabled = true, virtcolumn = '81' })
   end,
 })
 
