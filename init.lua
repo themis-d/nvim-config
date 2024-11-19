@@ -201,6 +201,14 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+vim.keymap.set('i', '<Tab>', function()
+  if require('cmp').visible() then
+    vim.fn.feedkeys('<Tab>', 'i')
+  else
+    vim.fn.feedkeys("<Tab>", 'i')
+  end
+end)
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -723,7 +731,7 @@ require('lazy').setup({
         -- Enable "format_on_save lsp_fallback" for languages that
         -- have a well standardized coding style. You can add additional
         -- languages here.
-        local enable_filetypes = { }
+        local enable_filetypes = {}
         local lsp_format_opt
         if enable_filetypes[vim.bo[bufnr].filetype] then
           lsp_format_opt = 'fallback'
@@ -736,7 +744,7 @@ require('lazy').setup({
         }
       end,
       formatters_by_ft = {
-        lua = { 'stylua' },
+        -- lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
