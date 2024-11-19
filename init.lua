@@ -1,5 +1,4 @@
 --[[
-
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
 =====================================================================
@@ -202,10 +201,13 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 vim.keymap.set('i', '<Tab>', function()
-  if require('cmp').visible() then
-    vim.fn.feedkeys('<Tab>', 'i')
+  local cmp = require 'cmp'
+
+  if cmp.visible() then
+    cmp.confirm( {select = true} );
   else
-    vim.fn.feedkeys("<Tab>", 'i')
+    local key = vim.api.nvim_replace_termcodes("<Tab>", true, false, true)
+    vim.api.nvim_feedkeys(key, 'n', false)
   end
 end)
 
