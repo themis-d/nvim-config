@@ -161,7 +161,7 @@ vim.opt.filetype = 'on'
 vim.api.nvim_create_autocmd('filetype', {
   desc = 'set default options for c files',
 
-  pattern = 'c',
+  pattern = {"c", "scala"},
   callback = function(opts)
     require('virt-column').setup_buffer(0, { enabled = true, virtcolumn = '81' })
   end,
@@ -736,7 +736,7 @@ require('lazy').setup({
         -- Enable "format_on_save lsp_fallback" for languages that
         -- have a well standardized coding style. You can add additional
         -- languages here.
-        local enable_filetypes = {}
+        local enable_filetypes = { scala = true }
         local lsp_format_opt
         if enable_filetypes[vim.bo[bufnr].filetype] then
           lsp_format_opt = 'fallback'
@@ -744,11 +744,12 @@ require('lazy').setup({
           lsp_format_opt = 'never'
         end
         return {
-          timeout_ms = 500,
+          timeout_ms = 1000,
           lsp_format = lsp_format_opt,
         }
       end,
       formatters_by_ft = {
+           scala = { 'scalafmt' }
         -- lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
