@@ -214,7 +214,7 @@ end)
 -- [[ Convenience keybinds ]]
 vim.keymap.set('n', '<leader>nt', '<cmd>Neotree<CR>', { desc = 'Open neo-tree window' })
 vim.keymap.set('n', '<leader>ng', '<cmd>Neogit<CR>', { desc = 'Open neo-git window' })
-vim.keymap.set('n', '<leader>nd', '<cmd>DiffViewOpen<CR>', { desc = 'Open diffview window' })
+vim.keymap.set('n', '<leader>nd', '<cmd>DiffviewOpen<CR>', { desc = 'Open diffview window' })
 vim.keymap.set('n', '<leader>k', 'gT', { desc = 'Go to previous tab' })
 vim.keymap.set('n', '<leader>j', 'gt', { desc = 'Go to next tab' })
 
