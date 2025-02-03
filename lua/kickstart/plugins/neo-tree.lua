@@ -18,6 +18,8 @@ return {
       window = {
         mappings = {
           ['\\'] = 'close_window',
+          ['<tab>'] = 'toggle_node',
+          ['<space>'] = 'none'
         },
       },
     },
