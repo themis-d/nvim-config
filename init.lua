@@ -211,6 +211,19 @@ vim.keymap.set('i', '<Tab>', function()
   end
 end)
 
+-- [[ Convenience keybinds ]]
+vim.keymap.set('n', '<leader>nt', '<cmd>Neotree<CR>', { desc = 'Open neo-tree window' })
+vim.keymap.set('n', '<leader>ng', '<cmd>Neogit<CR>', { desc = 'Open neo-git window' })
+vim.keymap.set('n', '<leader>nd', '<cmd>DiffViewOpen<CR>', { desc = 'Open diffview window' })
+vim.keymap.set('n', '<leader>k', 'gT', { desc = 'Go to previous tab' })
+vim.keymap.set('n', '<leader>j', 'gt', { desc = 'Go to next tab' })
+
+-- [[ Convenience autocommands ]]
+vim.api.nvim_create_autocmd("VimEnter", { callback = function ()
+  vim.cmd("Neotree")
+  vim.cmd("$wincmd l")
+end })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -986,7 +999,10 @@ require('lazy').setup({
       "ibhagwan/fzf-lua",              -- optional
       "echasnovski/mini.pick",         -- optional
     },
-    config = true
+    config = true,
+    integrations = {
+      diffview = true
+    },
   },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
