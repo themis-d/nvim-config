@@ -700,6 +700,15 @@ require('lazy').setup({
         },
       }
 
+      -- Custom lsp setup
+      vim.api.nvim_create_autocmd('FileType', {
+        desc = "Run gdscript lsp when opening gdscript files",
+        pattern = "gdscript",
+        callback = function (opts)
+           require("custom-lsp.godot")
+        end
+      })
+
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
       --  other tools, you can run
