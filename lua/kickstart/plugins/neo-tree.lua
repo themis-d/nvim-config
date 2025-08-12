@@ -22,6 +22,12 @@ return {
           ['<space>'] = 'none'
         },
       },
+
+      filtered_items = {
+        hide_by_pattern = {
+          '*.gd.uid'
+        }
+      }
     },
   },
 }
