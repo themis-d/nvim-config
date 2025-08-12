@@ -261,7 +261,7 @@ vim.opt.rtp:prepend(lazypath)
 --    :Lazy update
 
 -- Load configurations stored in external files
-require("custom.plugins.metals")
+require("custom-lsp.metals")
 
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
