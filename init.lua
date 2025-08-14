@@ -97,11 +97,9 @@ vim.g.have_nerd_font = true
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
--- Make line numbers default
+-- Make relative line numbers default
 vim.opt.number = true
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -155,6 +153,9 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+
+-- Set tab to be represented by 4 spaces
+vim.opt.tabstop = 4
 
 -- Options specific to file types
 vim.opt.filetype = 'on'
@@ -699,15 +700,6 @@ require('lazy').setup({
           },
         },
       }
-
-      -- Custom lsp setup
-      vim.api.nvim_create_autocmd('FileType', {
-        desc = "Run gdscript lsp when opening gdscript files",
-        pattern = "gdscript",
-        callback = function (opts)
-           require("custom-lsp.godot")
-        end
-      })
 
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
